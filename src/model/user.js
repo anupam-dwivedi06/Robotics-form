@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
     scNumber: String,
     password: String,
     otherCollege: String,
-    image: String, // cloudinary URL or empty for MANIT
+    image: String,
   },
   { timestamps: true }
 );
