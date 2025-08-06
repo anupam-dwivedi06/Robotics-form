@@ -2,8 +2,9 @@ import { NextResponse } from "next/server";
 import connectDB from "@/DBConnect/config";
 import axios from "axios";
 import https from "https";
+import formidable from 'formidable';
 import dotenv from "dotenv";
-import users from "@/model/user"; // You need to define this schema
+import User from "@/model/user"; // You need to define this schema
 
 dotenv.config(); // ✅ Load env vars
 
@@ -12,7 +13,10 @@ await connectDB();
 export async function POST(req) {
   try {
     console.log("Run")
-    
+
+
+    const body = await req.json();
+    console.log(body);
     const {
       name,
       email,
@@ -22,8 +26,9 @@ export async function POST(req) {
       know,
       scNumber,
       password,
-      otherCollege,
-    } = await req.json();
+      otherCollege
+    } = body;
+   
     // const {scNumber , password} = formData ;
     console.log("Received credentials:", scNumber, password);
     if (!scNumber || !password) {
@@ -41,7 +46,7 @@ export async function POST(req) {
       console.log("Chala hai")
       const response = await axios.post(
         `https://erpapi.manit.ac.in/api/login`,
-        { username: scNumber, password },
+        { username: scNumber, password: password },
         {
           httpsAgent: agent,
           headers: { "Content-Type": "application/json" },
@@ -51,7 +56,7 @@ export async function POST(req) {
 
       if (response) {
         try {
-          const user = new users({
+          const user = new User({
             name,
             email,
             wpNumber,
@@ -62,7 +67,7 @@ export async function POST(req) {
             password,
             otherCollege,
           });
-          console.log(users)
+          console.log(user)
           await user.save();
           console.log(response);
           return NextResponse.json(

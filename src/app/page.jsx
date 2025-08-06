@@ -35,35 +35,46 @@ const Page = () => {
     const {college , scNumber , password} = formData ;
     data.append("image", formData.image); //  File object
 
+    
+
     // if college manit
-    if(college === 'MANIT' && (scNumber && password)){
-      console.log("Reached here")
-      try {
-        const response = await axios.post("/api/login",  
-          {
-            name: formData.name,
-            email: formData.email,
-            wpNumber: formData.wpNumber,
-            scNumber: formData.scNumber,
-            password: formData.password,
-            know: formData.know,
-            year: formData.year,
-            otherCollege: formData.otherCollege,
-            college: formData.college,
-            // image: response.data.cloudinary_uri
-          }, 
-          {
-            headers: {
-              "Content-Type": "multipart/form-data", // Optional — browser sets it automatically
-            },
-          }
-    );
-      console.log(response) ;    
-  } catch (error) {
-              console.log(error) ;
-              console.log(error.message)
-      }
+   if (college === 'MANIT' && (scNumber && password)) {
+  console.log("Reached here");
+
+  const jsonData = {
+    name: formData.name,
+    email: formData.email,
+    wpNumber: formData.wpNumber,
+    scNumber: formData.scNumber,
+    password: formData.password,
+    know: formData.know,
+    year: formData.year,
+    otherCollege: formData.otherCollege,
+    college: formData.college
+  };
+
+  try {
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(jsonData),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong");
     }
+
+    console.log("Success:", data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+    
 
     // if other college
     else {
