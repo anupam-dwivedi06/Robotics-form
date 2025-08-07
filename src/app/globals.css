@@ -1,1 +1,89 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
 @import "tailwindcss";
+
+body {
+  font-family: 'Orbitron', sans-serif;
+}
+/* background.css */
+.animated-bg {
+  background: radial-gradient(#0f0f0f, #050505);
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-bg::before,
+.animated-bg::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.08) 0px,
+    rgba(0, 255, 255, 0.08) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation: moveGrid 30s linear infinite;
+  pointer-events: none;
+}
+
+.animated-bg::after {
+  animation-direction: reverse;
+  opacity: 0.5;
+}
+
+@keyframes moveGrid {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+input,
+select,
+textarea {
+  font-size: 0.875rem; /* text-sm */
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0d0d0d;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Moving robo-style animated background */
+.animated-bg {
+  background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #0d0d0d, #111111);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+select, option {
+  background-color: #111827; /* dark background */
+  color: #c4b5fd; /* lavender text */
+  font-family: 'Orbitron', sans-serif;
+  border: 1px solid #3d20b3;
+  font-size: 0.9rem;
+}

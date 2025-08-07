@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import "./globals.css";
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -28,10 +29,9 @@ const Page = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFormData({ ...formData, image: reader.result }); // base64
+      setFormData({ ...formData, image: reader.result });
     };
     reader.readAsDataURL(file);
   };
@@ -91,181 +91,190 @@ const Page = () => {
     }
   };
 
+  const baseInputStyle =
+    "w-full p-2 rounded-md bg-black/30 text-white text-sm border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500";
+
   return (
-    <div className="flex">
-      <div className="bg-[#0D0D1C] w-[50vw] h-screen text-white flex flex-col justify-center gap-5 px-6 text-center">
-        <h1 className="text-7xl font-bold">Robotics Club</h1>
-        <h2 className="text-3xl">MANIT Bhopal</h2>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
-          maxime modi rerum natus aspernatur incidunt quae reprehenderit
-          nesciunt, ab nisi ullam suscipit voluptates eligendi quod debitis
-          animi maiores. Facere, tempora?
+    <div className="animated-bg min-h-screen flex flex-col md:flex-row font-['Orbitron'] text-white">
+      {/* LEFT PANEL */}
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center p-10 z-10">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500 drop-shadow-lg">
+          Robotics Club
+        </h1>
+        <h2 className="text-xl md:text-3xl font-medium text-cyan-300 mt-2 mb-4">
+          MANIT Bhopal
+        </h2>
+        <p className="max-w-lg text-sm md:text-base text-gray-300 leading-relaxed">
+          Dive into the future with us. Learn, build, and innovate in a workshop
+          designed for aspiring engineers and makers.
         </p>
       </div>
 
-      <div className="flex-1 h-screen overflow-y-scroll px-16 py-8 bg-[#121212] text-white">
-        <h2 className="text-center text-3xl mb-6 font-semibold">
-          Register for the Workshop
-        </h2>
+      {/* RIGHT PANEL */}
+      <div className="w-full md:w-1/2 flex justify-center items-center px-6 md:px-12 py-10 z-10">
+        <div className="w-full max-w-xl bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-cyan-400/30 shadow-[0_0_20px_#00ffff44] animate-fadeIn">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-cyan-200">
+            Register for the Workshop
+          </h2>
 
-        <form className="flex flex-col gap-4 px-8" onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Name"
-              required
-              className="p-2 mt-1 rounded bg-[#1f1f1f] w-full"
-            />
-          </label>
+          <form className="space-y-5" onSubmit={handleSubmit}>
+            {[{ label: "Name", name: "name", type: "text" },
+              { label: "Email", name: "email", type: "email" },
+              { label: "WhatsApp Number", name: "wpNumber", type: "text" }].map(
+              ({ label, name, type }) => (
+                <div key={name}>
+                  <label className="block text-sm font-medium mb-1">
+                    {label}:
+                  </label>
+                  <input
+                    type={type}
+                    name={name}
+                    value={formData[name]}
+                    onChange={handleChange}
+                    required
+                    className={baseInputStyle}
+                    placeholder={label}
+                  />
+                </div>
+              )
+            )}
 
-          <label>
-            Email:
-            <input
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-              required
-              className="p-2 mt-1 rounded bg-[#1f1f1f] w-full"
-            />
-          </label>
+            {/* College */}
+            <div>
+              <label className="block text-sm font-medium mb-1">College:</label>
+              <select
+                name="college"
+                value={formData.college}
+                onChange={handleChange}
+                required
+                className={baseInputStyle}
+              >
+                <option value="">-- Select College --</option>
+                <option value="MANIT">MANIT Bhopal</option>
+                <option value="Other">Other College</option>
+              </select>
+            </div>
 
-          <label>
-            WhatsApp Number:
-            <input
-              name="wpNumber"
-              value={formData.wpNumber}
-              onChange={handleChange}
-              placeholder="WhatsApp Number"
-              required
-              className="p-2 mt-1 rounded bg-[#1f1f1f] w-full"
-            />
-          </label>
+            {isManit && (
+              <>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Scholar Number:
+                  </label>
+                  <input
+                    type="text"
+                    name="scNumber"
+                    value={formData.scNumber}
+                    onChange={handleChange}
+                    placeholder="Scholar Number"
+                    required
+                    className={baseInputStyle}
+                  />
+                </div>
 
-          <label>
-            College:
-            <select
-              name="college"
-              value={formData.college}
-              onChange={handleChange}
-              required
-              className="p-2 mt-1 rounded bg-[#1f1f1f] text-black w-full"
-            >
-              <option value="">-- Select College --</option>
-              <option value="MANIT">MANIT Bhopal</option>
-              <option value="Other">Other College</option>
-            </select>
-          </label>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    MANIT Email Password:
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="Password"
+                    required
+                    className={baseInputStyle}
+                  />
+                </div>
+              </>
+            )}
 
-          {isManit && (
-            <>
-              <label>
-                Scholar Number:
-                <input
-                  name="scNumber"
-                  value={formData.scNumber}
-                  onChange={handleChange}
-                  placeholder="Scholar Number"
-                  required
-                  className="p-2 mt-1 rounded bg-[#1f1f1f] w-full"
+            {isOtherCollege && (
+              <>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Your College Name:
+                  </label>
+                  <input
+                    type="text"
+                    name="otherCollege"
+                    value={formData.otherCollege}
+                    onChange={handleChange}
+                    placeholder="College Name"
+                    className={baseInputStyle}
+                  />
+                </div>
+
+                <p className="text-xs text-gray-400">
+                  Pay ₹99 and upload payment screenshot:
+                </p>
+                <img
+                  src="/ss-pay.jpg"
+                  alt="QR"
+                  className="w-48 mx-auto my-2 rounded border border-gray-400"
                 />
-              </label>
 
-              <label>
-                MANIT Email Password:
-                <input
-                  name="password"
-                  type="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder="MANIT Email Password"
-                  required
-                  className="p-2 mt-1 rounded bg-[#1f1f1f] w-full"
-                />
-              </label>
-            </>
-          )}
-
-          {isOtherCollege && (
-            <>
-              <label>
-                Your College Name:
-                <input
-                  name="otherCollege"
-                  value={formData.otherCollege}
-                  onChange={handleChange}
-                  placeholder="Your College Name"
-                  className="p-2 mt-1 rounded bg-[#1f1f1f] w-full"
-                />
-              </label>
-
-              <p className="text-sm mt-2">
-                Pay ₹99 and upload payment screenshot:
-              </p>
-              <img
-                src="/ss-pay.jpg"
-                alt="QR for Payment"
-                className="w-60 mx-auto my-2"
-              />
-
-              <label className="text-sm font-medium">
-                Payment Screenshot:
                 <input
                   type="file"
                   accept="image/*"
                   onChange={handleImageChange}
-                  className="mt-1 file:bg-red-500 file:text-white file:font-semibold file:px-4 file:py-2 file:border-none file:rounded file:cursor-pointer"
+                  className="w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-600 file:text-white hover:file:bg-cyan-700 transition"
                 />
+              </>
+            )}
+
+            {/* Year */}
+            <div>
+              <label className="block text-sm font-medium mb-1">Year:</label>
+              <select
+                name="year"
+                value={formData.year}
+                onChange={handleChange}
+                required
+                className={baseInputStyle}
+              >
+                <option value="">-- Select Year --</option>
+                <option value="1st">1st</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="4th">4th</option>
+              </select>
+            </div>
+
+            {/* Know */}
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                How did you hear about us?
               </label>
-            </>
-          )}
+              <select
+                name="know"
+                value={formData.know}
+                onChange={handleChange}
+                required
+                className={baseInputStyle}
+              >
+                <option value="">-- Select Option --</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Poster">Poster</option>
+                <option value="Friends">Friend Circle</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
 
-          <label>
-            Year:
-            <select
-              name="year"
-              value={formData.year}
-              onChange={handleChange}
-              required
-              className="p-2 mt-1 rounded bg-[#1f1f1f] text-black w-full"
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={isPending}
+              className={`w-full py-2 rounded-md font-bold text-white transition duration-200 ${
+                isPending
+                  ? "bg-gray-500 cursor-not-allowed"
+                  : "bg-cyan-500 hover:bg-cyan-600 shadow-[0_0_20px_#00ffff88] hover:shadow-[0_0_30px_#00ffffaa]"
+              }`}
             >
-              <option value="">-- Select Year --</option>
-              <option value="1st">1st</option>
-              <option value="2nd">2nd</option>
-              <option value="3rd">3rd</option>
-              <option value="4th">4th</option>
-            </select>
-          </label>
-
-          <label>
-            How did you hear about us?
-            <select
-              name="know"
-              value={formData.know}
-              onChange={handleChange}
-              required
-              className="p-2 mt-1 rounded bg-[#1f1f1f] text-black w-full"
-            >
-              <option value="">-- Select Option --</option>
-              <option value="Instagram">Instagram</option>
-              <option value="Poster">Poster</option>
-              <option value="Friends">Friend Circle</option>
-              <option value="Other">Other</option>
-            </select>
-          </label>
-
-          <button
-            type="submit"
-            className="mt-4 py-2 px-4 bg-red-600 hover:bg-red-700 rounded"
-          >
-            {isPending ? "Submitting..." : "Submit"}
-          </button>
-        </form>
+              {isPending ? "Submitting..." : "Submit"}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
