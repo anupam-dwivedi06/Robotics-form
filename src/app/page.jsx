@@ -141,7 +141,7 @@ const Page = () => {
 
             {/* College */}
             <div>
-              <label className="block text-sm font-medium mb-1">College:</label>
+              <label className="block text-sm font-medium mb-1">College/Institution</label>
               <select
                 name="college"
                 value={formData.college}
@@ -149,9 +149,9 @@ const Page = () => {
                 required
                 className={baseInputStyle}
               >
-                <option value="">-- Select College --</option>
+                <option value="">--Select your College/Institution--</option>
                 <option value="MANIT">MANIT Bhopal</option>
-                <option value="Other">Other College</option>
+                <option value="Other">Other College/Institution</option>
               </select>
             </div>
 
@@ -193,7 +193,7 @@ const Page = () => {
               <>
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    Your College Name:
+                    Your College/Institution Name:
                   </label>
                   <input
                     type="text"
@@ -254,10 +254,17 @@ const Page = () => {
                 className={baseInputStyle}
               >
                 <option value="">-- Select Option --</option>
-                <option value="Instagram">Instagram</option>
-                <option value="Poster">Poster</option>
-                <option value="Friends">Friend Circle</option>
-                <option value="Other">Other</option>
+                <option value="Robotics Club MANIT Socials (Instagram, LinkedIn etc.)">
+    Robotics Club MANIT Socials (Instagram, LinkedIn etc.)
+  </option>
+  <option value="Poster/Banners">Poster/Banners</option>
+  <option value="Through your College/Institution">
+    Through your College/Institution
+  </option>
+  <option value="Through a friend/Word of mouth">
+    Through a friend/Word of mouth
+  </option>
+  <option value="Other">Other</option>
               </select>
             </div>
 
