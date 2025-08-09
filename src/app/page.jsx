@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
+import toast from 'react-hot-toast';
 
 const Page = () => {
   const router = useRouter();
@@ -82,10 +84,12 @@ const Page = () => {
         });
 
         if (!res.data) throw new Error("User registration failed");
-        alert("User registered successfully!");
+        // alert("User registered successfully!");
+        toast.success("User registered successfully!")
         router.push("/Success");
       } else {
-        alert("Incomplete data");
+        // alert("Incomplete data");
+        toast.error("Incomplete data");
       }
     } catch (err) {
       alert("Error: " + err.message);
