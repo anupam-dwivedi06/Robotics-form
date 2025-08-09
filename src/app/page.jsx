@@ -212,7 +212,7 @@ const Page = () => {
                   Pay ₹99 and upload payment screenshot:
                 </p>
                 <img
-                  src="/ss-pay.jpg"
+                  src="/roboform-qr.jpg"
                   alt="QR"
                   className="w-48 mx-auto my-2 rounded border border-gray-400"
                 />
