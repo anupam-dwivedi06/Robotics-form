@@ -102,7 +102,7 @@ const Page = () => {
       <img
         src="/MANIT.png"
         alt="Decoration 1"
-        className="absolute top-4 left-5 z-100  w-15 h-15 opacity-100  "
+        className="absolute top-5 left-10 z-100  w-15 h-15 opacity-100  "
       />
       
       <img
