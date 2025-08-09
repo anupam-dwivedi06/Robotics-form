@@ -108,7 +108,7 @@ const Page = () => {
       <img
         src="/robot.png"
         alt="Centered Mirrored"
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-x-[-1] hidden sm:block"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-x-[-1] hidden sm:block fix "
       />
 
       {/* Floating orbs */}
@@ -147,8 +147,8 @@ const Page = () => {
               </div>
             </div>
           </div>
-<div className="bg-white text-black px-4 py-1 font-bold   w-fit poppins-light text-xl border2">About Automax</div>
-          <div className="mb-6 md:mb-8 bg-black/40 border border-white/30 p-5 md:p-8  border2">
+<div className="bg-white text-black px-4 py-1 font-bold   w-fit poppins-light text-xl border2 ">About Automax</div>
+          <div className="mb-6 md:mb-8 bg-black/40 border border-white/30 p-5 md:p-8  border2 max-w-170 ">
           
             <p className="text-white text-sm md:text-base leading-relaxed poppins-light ">
               Join AutoMax 4.0 at MANIT Bhopal — a hands-on robotics workshop packed with live demos, real projects, and expert guidance. Learn to design, build, and program robots while connecting with top robotics enthusiasts.
@@ -171,7 +171,7 @@ const Page = () => {
         </div>
 
         {/* Right Panel - Form with translucent blurred background */}
-        <div className="w-full lg:w-1/2 p-6 md:p-12 flex items-center justify-center poppins-light">
+        <div className="w-full lg:w-1/2 p-6 md:p-12 flex items-center justify-center bg-black/60 ">
           <div className="w-full max-w-md bg-black/40 backdrop-blur-xl rounded-xl shadow-xl border border-gray-700 p-8">
             <form onSubmit={handleSubmit} className="space-y-6 text-white">
               {/* Form fields here */}
