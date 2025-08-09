@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
-import toast from 'react-hot-toast';
 
 const Page = () => {
   const router = useRouter();
@@ -67,7 +65,8 @@ const Page = () => {
 
         const data = await res.json();
         if (!res.ok) throw new Error(data.message);
-        alert("MANIT user verified and registered!");
+        // alert("MANIT user verified and registered!");
+        router.push("/Success")
       } else if (college === "Other" && image) {
         const uploadRes = await fetch("/api/upload", {
           method: "POST",
@@ -85,7 +84,7 @@ const Page = () => {
 
         if (!res.data) throw new Error("User registration failed");
         // alert("User registered successfully!");
-        toast.success("User registered successfully!")
+        // toast.success("User registered successfully!")
         router.push("/Success");
       } else {
         // alert("Incomplete data");
@@ -103,6 +102,7 @@ const Page = () => {
 
   return (
     <div className="animated-bg min-h-screen flex flex-col md:flex-row font-['Orbitron'] text-white">
+
       {/* LEFT PANEL */}
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center p-10 z-10">
         <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500 drop-shadow-lg">
