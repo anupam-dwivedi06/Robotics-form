@@ -141,7 +141,7 @@ const Page = () => {
 
               <div className="mb-6">
                 <div className="text-white text-base md:text-lg mb-2 justify-center gap-5 px-6 text-center some-class text-xxl">PRESENTS</div>
-                <div className=" .gradient-white-to-purple text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-3xl md:text-5xl font-bold justify-center gap-5 px-6 text-center">
+                <div className=" .gradient-white-to-purple text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-3xl md:text-5xl font-bold justify-center gap-5 px-6 text-center automata2">
                   AUTOMAX 4.0
                 </div>
               </div>

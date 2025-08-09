@@ -101,7 +101,19 @@ textarea {
   color: white;
 }
 
-
+.automata2{
+    font-family: 'Orbitron', sans-serif;
+    background:  linear-gradient(
+    to bottom,
+    white 0%,
+    white ,
+    white ,
+    #6b21a8 ,
+    #6b21a8 100%
+  );;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
