@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import "./globals.css";
 
 const Page = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -81,6 +83,7 @@ const Page = () => {
 
         if (!res.data) throw new Error("User registration failed");
         alert("User registered successfully!");
+        router.push("/Success");
       } else {
         alert("Incomplete data");
       }
