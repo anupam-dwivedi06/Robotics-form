@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import "./globals.css";
-
 const Page = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -19,6 +17,7 @@ const Page = () => {
   });
 
   const [isPending, setIsPending] = useState(false);
+
   const isManit = formData.college === "MANIT";
   const isOtherCollege = formData.college === "Other";
 
@@ -39,7 +38,6 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsPending(true);
-
     const {
       name,
       email,
@@ -91,196 +89,288 @@ const Page = () => {
     }
   };
 
-  const baseInputStyle =
-    "w-full p-2 rounded-md bg-black/30 text-white text-sm border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500";
-
   return (
-    <div className="animated-bg min-h-screen flex flex-col md:flex-row font-['Orbitron'] text-white">
-      {/* LEFT PANEL */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center p-10 z-10">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500 drop-shadow-lg">
-          Robotics Club
-        </h1>
-        <h2 className="text-xl md:text-3xl font-medium text-cyan-300 mt-2 mb-4">
-          MANIT Bhopal
-        </h2>
-        <p className="max-w-lg text-sm md:text-base text-gray-300 leading-relaxed">
-          Dive into the future with us. Learn, build, and innovate in a workshop
-          designed for aspiring engineers and makers.
-        </p>
+    <div
+      className="min-h-screen flex flex-col lg:flex-row bg-cover bg-center bg-no-repeat relative"
+      style={{
+        backgroundImage: "url('bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <img
+        src="/MANIT.png"
+        alt="Decoration 1"
+        className="absolute top-4 left-5 z-100  w-15 h-15 opacity-100  "
+      />
+      
+      <img
+        src="/robot.png"
+        alt="Centered Mirrored"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-x-[-1] hidden sm:block"
+      />
+
+      {/* Floating orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-16 h-16 md:w-32 md:h-32 bg-purple-700/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 md:w-48 md:h-48 bg-blue-700/20 rounded-full blur-3xl animate-pulse delay-100"></div>
+        <div className="absolute bottom-32 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-purple-800/15 rounded-full blur-4xl animate-pulse delay-200"></div>
+        <div className="absolute bottom-20 right-10 w-20 h-20 md:w-40 md:h-40 bg-blue-600/25 rounded-full blur-3xl animate-pulse delay-300"></div>
+        <div className="absolute top-1/3 left-1/2 w-28 h-28 md:w-56 md:h-56 bg-indigo-700/15 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
-      {/* RIGHT PANEL */}
-      <div className="w-full md:w-1/2 flex justify-center items-center px-6 md:px-12 py-10 z-10">
-        <div className="w-full max-w-xl bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-cyan-400/30 shadow-[0_0_20px_#00ffff44] animate-fadeIn">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-cyan-200">
-            Register for the Workshop
-          </h2>
+      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full">
+        {/* Left Panel - No blur */}
+<img
+        src="/logo.png"
+        alt="Decoration 2"
+        className="absolute md:top-0 md:left-160 top-0 right-0  z-100 w-50 h-32 opacity-100"
+      />
+        <div className="w-full lg:w-1/2 p-6 md:p-12 flex flex-col justify-center text-white bg-black/60">
+          {/* Left panel content */}
+          <div className="mb-6 md:mb-8">
+            <div className="flex items-center justify-center lg:justify-start mb-4">
 
-          <form className="space-y-5" onSubmit={handleSubmit}>
-            {[{ label: "Name", name: "name", type: "text" },
-              { label: "Email", name: "email", type: "email" },
-              { label: "WhatsApp Number", name: "wpNumber", type: "text" }].map(
-              ({ label, name, type }) => (
-                <div key={name}>
-                  <label className="block text-sm font-medium mb-1">
-                    {label}:
-                  </label>
-                  <input
-                    type={type}
-                    name={name}
-                    value={formData[name]}
-                    onChange={handleChange}
-                    required
-                    className={baseInputStyle}
-                    placeholder={label}
-                  />
-                </div>
-              )
-            )}
 
-            {/* College */}
-            <div>
-              <label className="block text-sm font-medium mb-1">College/Institution</label>
-              <select
-                name="college"
-                value={formData.college}
-                onChange={handleChange}
-                required
-                className={baseInputStyle}
-              >
-                <option value="">--Select your College/Institution--</option>
-                <option value="MANIT">MANIT Bhopal</option>
-                <option value="Other">Other College/Institution</option>
-              </select>
             </div>
 
-            {isManit && (
-              <>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Scholar Number:
-                  </label>
-                  <input
-                    type="text"
-                    name="scNumber"
-                    value={formData.scNumber}
-                    onChange={handleChange}
-                    placeholder="Scholar Number"
-                    required
-                    className={baseInputStyle}
-                  />
+            <div className="text-center lg:text-left">
+              <h1 className="text-white text-2xl md:text-5xl justify-center gap-5 px-6 text-center font-monsterbeast font-medium mt-20  mb-2">ROBOTICS CLUB</h1>
+              <h2 className="text-white text-lg md:text-2xl font-monsterbeast justify-center gap-5 px-6 text-center mt-0 font-medium mb-6 md:mb-8">MANIT BHOPAL</h2>
+
+              <div className="mb-6">
+                <div className="text-white text-base md:text-lg mb-2 justify-center gap-5 px-6 text-center some-class text-xxl">PRESENTS</div>
+                <div className=" .gradient-white-to-purple text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-3xl md:text-5xl font-bold justify-center gap-5 px-6 text-center">
+                  AUTOMAX 4.0
                 </div>
+              </div>
+            </div>
+          </div>
+<div className="bg-white text-black px-4 py-1 font-bold  rounded w-fit poppins-light text-xl ">About Automax</div>
+          <div className="mb-6 md:mb-8 bg-black/40 border border-white/30 p-5 md:p-8 rounded-lg">
+          
+            <p className="text-white text-sm md:text-base leading-relaxed poppins-light ">
+              Join AutoMax 4.0 at MANIT Bhopal — a hands-on robotics workshop packed with live demos, real projects, and expert guidance. Learn to design, build, and program robots while connecting with top robotics enthusiasts.
+            </p>
+            <p className="text-white text-sm md:text-base mt-4 font-semibold poppins-light ">
+              Seats are limited — register now!
+            </p>
+          </div>
 
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    MANIT Email Password:
-                  </label>
-                  <input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                    required
-                    className={baseInputStyle}
-                  />
-                </div>
-              </>
-            )}
+          <div className="space-y-4 mb-6 lg:mb-0 text-white">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
+              <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2">DATE</div>
+              <div className="bg-gray-900 px-5 py-1  text-sm poppins-light border2">06 - 07 Sept</div>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
+              <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2">VENUE</div>
+              <div className="bg-gray-900 px-5 py-1 text-sm poppins-light border2 ">MANIT, Bhopal</div>
+            </div>
+          </div>
+        </div>
 
-            {isOtherCollege && (
-              <>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Your College/Institution Name:
-                  </label>
-                  <input
-                    type="text"
-                    name="otherCollege"
-                    value={formData.otherCollege}
-                    onChange={handleChange}
-                    placeholder="College Name"
-                    className={baseInputStyle}
-                  />
-                </div>
-
-                <p className="text-xs text-gray-400">
-                  Pay ₹99 and upload payment screenshot:
-                </p>
-                <img
-                  src="/ss-pay.jpg"
-                  alt="QR"
-                  className="w-48 mx-auto my-2 rounded border border-gray-400"
-                />
-
+        {/* Right Panel - Form with translucent blurred background */}
+        <div className="w-full lg:w-1/2 p-6 md:p-12 flex items-center justify-center poppins-light">
+          <div className="w-full max-w-md bg-black/40 backdrop-blur-xl rounded-xl shadow-xl border border-gray-700 p-8">
+            <form onSubmit={handleSubmit} className="space-y-6 text-white">
+              {/* Form fields here */}
+              {/* Name */}
+              <div>
+                <label className="block text-white text-sm mb-2 ">Name</label>
                 <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-600 file:text-white hover:file:bg-cyan-700 transition"
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  className=" poppins-light w-full px-4 py-3 bg-black/50 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                  required
                 />
-              </>
-            )}
+              </div>
 
-            {/* Year */}
-            <div>
-              <label className="block text-sm font-medium mb-1">Year:</label>
-              <select
-                name="year"
-                value={formData.year}
-                onChange={handleChange}
-                required
-                className={baseInputStyle}
+              {/* Email */}
+              <div>
+                <label className="block text-white text-sm mb-2">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your Email"
+                  className=" poppins-light w-full px-4 py-3 bg-black/50 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                  required
+                />
+              </div>
+
+              {/* WhatsApp Number */}
+              <div>
+                <label className="block text-white text-sm mb-2">WhatsApp Number</label>
+                <input
+                  type="tel"
+                  name="wpNumber"
+                  value={formData.wpNumber}
+                  onChange={handleChange}
+                  placeholder="WhatsApp Number"
+                  className="poppins-light w-full px-4 py-3 bg-black/50 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                  required
+                />
+              </div>
+
+              {/* College */}
+              <div>
+                <label className="block text-white text-sm mb-2">College/Institution</label>
+                <select
+                  name="college"
+                  value={formData.college}
+                  onChange={handleChange}
+                  className="poppins-light w-full px-4 py-3 bg-black/50 border border-gray-600 rounded text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                  required
+                >
+                  <option value="" className="bg-gray-800 poppins-light">
+                    --Select College/Institution--
+                  </option>
+                  <option value="MANIT" className="bg-gray-800 poppins-light">
+                    MANIT Bhopal
+                  </option>
+                  <option value="Other" className="bg-gray-800 poppins-light">
+                    Other College/Institution
+                  </option>
+                </select>
+              </div>
+
+              {/* Scholar Number & Password for MANIT */}
+              {isManit && (
+                <>
+                  <div>
+                    <label className="block text-white text-sm mb-2">Scholar Number</label>
+                    <input
+                      type="text"
+                      name="scNumber"
+                      value={formData.scNumber}
+                      onChange={handleChange}
+                      placeholder="Scholar Number"
+                      className="poppins-light w-full px-4 py-3 bg-black/50 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white text-sm mb-2">MANIT Email Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      placeholder="Password"
+                      className="poppins-light w-full px-4 py-3 bg-black/50 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                      required
+                    />
+                  </div>
+                </>
+              )}
+
+              {/* Other College Name and Payment Screenshot Upload */}
+              {isOtherCollege && (
+                <>
+                  <div>
+                    <label className="block text-white text-sm mb-2">Your College/Institution Name</label>
+                    <input
+                      type="text"
+                      name="otherCollege"
+                      value={formData.otherCollege}
+                      onChange={handleChange}
+                      placeholder="College Name"
+                      className="poppins-light w-full px-4 py-3 bg-black/50 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                      required
+                    />
+                  </div>
+                  <p className="text-gray-300 text-xs mb-2 poppins-light">Pay ₹99 and upload payment screenshot:</p>
+                  <img
+                    src="/ss-pay.jpeg"
+                    alt="Payment QR"
+                    className="poppins-light w-48 mx-auto my-2 rounded border border-gray-400"
+                  />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="poppins-light w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-700 file:text-white hover:file:bg-purple-800 transition"
+                  />
+                </>
+              )}
+
+              {/* Year */}
+              <div>
+                <label className="block text-white text-sm mb-2">Year</label>
+                <select
+                  name="year"
+                  value={formData.year}
+                  onChange={handleChange}
+                  className="poppins-light w-full px-4 py-3 bg-black/50 border border-gray-600 rounded text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                  required
+                >
+                  <option value="" className="bg-gray-800 poppins-light">
+                    --Select Year--
+                  </option>
+                  <option value="1st" className="bg-gray-800 poppins-light">
+                    1st Year
+                  </option>
+                  <option value="2nd" className="bg-gray-800 poppins-light">
+                    2nd Year
+                  </option>
+                  <option value="3rd" className="bg-gray-800 poppins-light">
+                    3rd Year
+                  </option>
+                  <option value="4th" className="bg-gray-800 poppins-light">
+                    4th Year
+                  </option>
+                </select>
+              </div>
+
+              {/* How did you know */}
+              <div>
+                <label className="block text-white text-sm mb-2">How did you hear about us?</label>
+                <select
+                  name="know"
+                  value={formData.know}
+                  onChange={handleChange}
+                  className="poppins-light w-full px-4 py-3 bg-black/50 border border-gray-600 rounded text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                  required
+                >
+                  <option value="" className="bg-gray-800 poppins-light">
+                    --Select an Option--
+                  </option>
+                  <option value="social-media" className="bg-gray-800 poppins-light">
+                    Robotics Club MANIT Socials(Instagram,Linkedin etc)
+                  </option>
+                  <option value="friends" className="bg-gray-800 poppins-light">
+                    Poster/Banners
+                  </option>
+                  <option value="college" className="bg-gray-800 poppins-light">
+                    Through Your College/Institution
+                  </option>
+                  <option value="website" className="bg-gray-800 poppins-light">
+                    Through Your Friend/Word of Mouth
+                  </option>
+                  <option value="other" className="bg-gray-800 poppins-light">
+                    Other
+                  </option>
+                </select>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isPending}
+                className={`w-full py-3 rounded text-white font-semibold transition transform duration-200
+                  bg-gradient-to-r from-purple-600 to-pink-600
+                  hover:from-purple-700 hover:to-pink-700
+                  ${isPending ? "opacity-50 cursor-not-allowed" : "hover:scale-105 active:scale-95"}`}
               >
-                <option value="">-- Select Year --</option>
-                <option value="1st">1st</option>
-                <option value="2nd">2nd</option>
-                <option value="3rd">3rd</option>
-                <option value="4th">4th</option>
-              </select>
-            </div>
-
-            {/* Know */}
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                How did you hear about us?
-              </label>
-              <select
-                name="know"
-                value={formData.know}
-                onChange={handleChange}
-                required
-                className={baseInputStyle}
-              >
-                <option value="">-- Select Option --</option>
-                <option value="Robotics Club MANIT Socials (Instagram, LinkedIn etc.)">
-    Robotics Club MANIT Socials (Instagram, LinkedIn etc.)
-  </option>
-  <option value="Poster/Banners">Poster/Banners</option>
-  <option value="Through your College/Institution">
-    Through your College/Institution
-  </option>
-  <option value="Through a friend/Word of mouth">
-    Through a friend/Word of mouth
-  </option>
-  <option value="Other">Other</option>
-              </select>
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              disabled={isPending}
-              className={`w-full py-2 rounded-md font-bold text-white transition duration-200 ${
-                isPending
-                  ? "bg-gray-500 cursor-not-allowed"
-                  : "bg-cyan-500 hover:bg-cyan-600 shadow-[0_0_20px_#00ffff88] hover:shadow-[0_0_30px_#00ffffaa]"
-              }`}
-            >
-              {isPending ? "Submitting..." : "Submit"}
-            </button>
-          </form>
+                {isPending ? "Registering..." : "Register Now"}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

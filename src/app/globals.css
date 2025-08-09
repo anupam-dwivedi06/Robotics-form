@@ -1,7 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
 @import "tailwindcss";
-
+@font-face {
+  font-family: "NCL Monster Beast";
+  src: url("/ncl-monster-beast.demo.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   font-family: 'Orbitron', sans-serif;
 }
@@ -10,6 +15,49 @@ body {
   background: radial-gradient(#0f0f0f, #050505);
   position: relative;
   overflow: hidden;
+}
+
+@font-face {
+  font-family: 'PoppinsLight';
+  src: url('/poppins.light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}.text-xxl {
+  font-size: 1.5rem; /* 40px */
+  line-height: 1.2;
+}
+.text-xl {
+  font-size: 1rem; /* 40px */
+
+}
+.poppins-light {
+  font-family: 'PoppinsLight', sans-serif;
+}
+.border2 {
+  border:2px solid white
+}
+.gradient-white-to-purple {
+  background: linear-gradient(
+    to bottom,
+    white 0%,
+    #3d20b3 100%
+  );
+}
+@font-face {
+  font-family: 'PoppinsMedium';
+  src: url('/poppins.medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+.some-class {
+  font-family: 'PoppinsMedium', sans-serif;
+}
+
+
+.font-monsterbeast {
+  font-family: "NCL Monster Beast", cursive, sans-serif;
 }
 
 .animated-bg::before,
