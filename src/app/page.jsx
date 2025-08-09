@@ -147,8 +147,8 @@ const Page = () => {
               </div>
             </div>
           </div>
-<div className="bg-white text-black px-4 py-1 font-bold  rounded w-fit poppins-light text-xl ">About Automax</div>
-          <div className="mb-6 md:mb-8 bg-black/40 border border-white/30 p-5 md:p-8 rounded-lg">
+<div className="bg-white text-black px-4 py-1 font-bold   w-fit poppins-light text-xl border2">About Automax</div>
+          <div className="mb-6 md:mb-8 bg-black/40 border border-white/30 p-5 md:p-8  border2">
           
             <p className="text-white text-sm md:text-base leading-relaxed poppins-light ">
               Join AutoMax 4.0 at MANIT Bhopal — a hands-on robotics workshop packed with live demos, real projects, and expert guidance. Learn to design, build, and program robots while connecting with top robotics enthusiasts.
