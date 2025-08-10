@@ -141,7 +141,7 @@ body {
   
 }
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
   background: transparent;
 }
 
@@ -161,9 +161,7 @@ body {
 }
 
 /* Scrollbar Thumb Hover */
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #3a1c51, #f472b6);
-}
+
 
 /* Optional: Scrollbar corner if both horizontal and vertical scrollbars present */
 ::-webkit-scrollbar-corner {

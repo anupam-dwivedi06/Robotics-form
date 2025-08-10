@@ -99,8 +99,8 @@ const Page = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      
-      
+
+
       <img
         src="/robot.png"
         alt="Centered Mirrored"
@@ -116,28 +116,29 @@ const Page = () => {
         <div className="absolute top-1/3 left-1/2 w-28 h-28 md:w-56 md:h-56 bg-indigo-700/15 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full overflow-hidden">
+      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full overflow-hidden ">
         {/* Left Panel - No blur */}
-        
-    <img
-      src="/logo.png"
-      alt="Decoration"
-      className="absolute 
+
+
+
+
+
+        <div className=" relative w-full lg:w-[55%] p-6 md:p-12 flex flex-col justify-center text-white bg-black/60 
+  lg:sticky lg:top-0 lg:h-screen pl-9">
+          <img
+            src="/MANIT.png"
+            alt="Decoration 1"
+            className="absolute  top-5 left-10 z-100  w-15 h-15 opacity-100 "
+          />
+          <img
+            src="/logo.png"
+            alt="Decoration"
+            className="absolute 
     top-0 right-0       /* default for all screens */
     md:top-4 md:right-0 /* medium and up */
-    lg:top-0 lg:left-140 /* large and up */
+    lg:top-0 lg:right-8 /* large and up */
      md:w-36 lg:w-48 w-48 h-auto opacity-100 z-50 "
-    />
-
-    
-        
-        <div className="w-full lg:w-1/2 p-6 md:p-12 flex flex-col justify-center text-white bg-black/60 
-  lg:sticky lg:top-0 lg:h-screen">
-    <img
-        src="/MANIT.png"
-        alt="Decoration 1"
-        className="absolute  top-5 left-10 z-100  w-15 h-15 opacity-100 "
-      />
+          />
 
           {/* Left panel content */}
           <div className="mb-6 md:mb-8">
@@ -158,37 +159,37 @@ const Page = () => {
               </div>
             </div>
           </div>
-<div className="bg-white text-black px-4 py-1 font-bold   w-fit poppins-light text-xl border2 ">About Automax</div>
-          <div className="mb-6 md:mb-8 bg-black/40 border border-white/30 p-5 md:p-8  border2 max-w-170 ">
-          
-            <p className="text-white text-sm md:text-base leading-relaxed poppins-light ">
+          <div className="bg-white text-black px-4 py-1 font-bold   w-fit poppins-light text-xl border2 md:ml-6 ">About Automax</div>
+          <div className="mb-6 md:mb-8 bg-black/40 border border-white/30 p-5 md:p-8  border2 max-w-180 md:ml-6">
+
+            <p className="text-white text-sm md:text-base leading-relaxed poppins-light md:ml-6  ">
               Join AutoMax 4.0 at MANIT Bhopal — a hands-on robotics workshop packed with live demos, real projects, and expert guidance. Learn to design, build, and program robots while connecting with top robotics enthusiasts.
             </p>
-            <p className="text-white text-sm md:text-base mt-4 font-semibold poppins-light ">
+            <p className="text-white text-sm md:text-base mt-4 font-semibold poppins-light md:ml-6 ">
               Seats are limited — register now!
             </p>
           </div>
 
           <div className="space-y-4 mb-6 lg:mb-0 text-white">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
-              <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2">DATE</div>
-              <div className="bg-gray-900 px-5 py-1  text-sm poppins-light border2">06 - 07 Sept</div>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 md:ml-6 ">
+              <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2  ">DATE</div>
+              <div className="bg-gray-900 px-5 py-1  text-sm poppins-light border2  ">06 - 07 Sept</div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
-              <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2">VENUE</div>
-              <div className="bg-gray-900 px-5 py-1 text-sm poppins-light border2 ">MANIT, Bhopal</div>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 md:ml-6 ">
+              <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2  ">VENUE</div>
+              <div className="bg-gray-900 px-5 py-1 text-sm poppins-light border2  ">MANIT, Bhopal</div>
             </div>
           </div>
         </div>
 
         {/* Right Panel - Form with translucent blurred background */}
-<div className="w-full lg:w-1/2 p-6 md:p-10 flex items-center justify-center bg-black/60 overflow-hidden">
-  <div
-    className="w-full max-w-md bg-black/40 backdrop-blur-xl rounded-xl shadow-xl border border-gray-700 p-8
+        <div className="w-full lg:w-[45%] p-6 md:p-10 flex items-center justify-center bg-black/60 overflow-hidden">
+          <div
+            className="w-full max-w-md bg-black/40 backdrop-blur-xl rounded-xl shadow-xl border border-gray-700 p-8
     max-h-[90vh] overflow-y-auto "
-  >
-    <form onSubmit={handleSubmit} className="space-y-6 text-white">
-      {/* Form fields here */}
+          >
+            <form onSubmit={handleSubmit} className="space-y-6 text-white">
+              {/* Form fields here */}
               {/* Name */}
               <div>
                 <label className="block text-white text-sm mb-2 ">Name</label>
