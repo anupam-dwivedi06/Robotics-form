@@ -148,7 +148,7 @@ const Page = () => {
             </div>
 
             <div className="text-center lg:text-left">
-              <h1 className="text-white text-2xl md:text-5xl justify-center gap-5 px-6 text-center font-monsterbeast font-medium mt-20  mb-2">ROBOTICS CLUB</h1>
+              <h1 className="text-white text-2xl md:text-5xl justify-center gap-5 px-6 text-center font-monsterbeast font-medium mt-20   mb-2">ROBOTICS CLUB</h1>
               <h2 className="text-white text-lg md:text-2xl font-monsterbeast justify-center gap-5 px-6 text-center mt-0 font-medium mb-6 md:mb-8">MANIT BHOPAL</h2>
 
               <div className="mb-6">
@@ -159,23 +159,23 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white text-black px-4 py-1 font-bold   w-fit poppins-light text-xl border2 md:ml-6 ">About Automax</div>
-          <div className="mb-6 md:mb-8 bg-black/40 border border-white/30 p-5 md:p-8  border2 max-w-160 md:ml-6">
+          <div className="bg-white text-black px-4 py-1 font-bold   w-fit poppins-light text-xl border2  ">About Automax</div>
+          <div className="mb-6 md:mb-8 bg-black/40 border border-white/30 p-5 md:p-8  border2 max-w-160 ">
 
             <p className="text-white text-sm md:text-base leading-relaxed poppins-light   ">
               Join AutoMax 4.0 at MANIT Bhopal — a hands-on robotics workshop packed with live demos, real projects, and expert guidance. Learn to design, build, and program robots while connecting with top robotics enthusiasts.
             </p>
-            <p className="text-white text-sm md:text-base mt-4 font-semibold poppins-light md:ml-6 ">
+            <p className="text-white text-sm md:text-base mt-4 font-semibold poppins-light  ">
               Seats are limited — register now!
             </p>
           </div>
 
           <div className="space-y-4 mb-6 lg:mb-0 text-white">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 md:ml-6 ">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 ">
               <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2  ">DATE</div>
               <div className="bg-gray-900 px-5 py-1  text-sm poppins-light border2  ">06 - 07 Sept</div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 md:ml-6 ">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0  ">
               <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2  ">VENUE</div>
               <div className="bg-gray-900 px-5 py-1 text-sm poppins-light border2  ">MANIT, Bhopal</div>
             </div>
