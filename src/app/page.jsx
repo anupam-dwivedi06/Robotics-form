@@ -116,21 +116,29 @@ const Page = () => {
         <div className="absolute top-1/3 left-1/2 w-28 h-28 md:w-56 md:h-56 bg-indigo-700/15 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full ">
+      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full overflow-hidden">
         {/* Left Panel - No blur */}
+        
+    <img
+      src="/logo.png"
+      alt="Decoration"
+      className="absolute 
+    top-0 right-0       /* default for all screens */
+    md:top-4 md:right-0 /* medium and up */
+    lg:top-0 lg:left-140 /* large and up */
+     md:w-36 lg:w-48 w-48 h-auto opacity-100 z-50 "
+    />
+
+    
         
         <div className="w-full lg:w-1/2 p-6 md:p-12 flex flex-col justify-center text-white bg-black/60 
   lg:sticky lg:top-0 lg:h-screen">
     <img
         src="/MANIT.png"
         alt="Decoration 1"
-        className="absolute top-5 left-10 z-100  w-15 h-15 opacity-100 "
+        className="absolute  top-5 left-10 z-100  w-15 h-15 opacity-100 "
       />
-<img
-        src="/logo.png"
-        alt="Decoration 2"
-        className="absolute md:top-0 md:left-160 top-0 right-0  z-100 w-50 h-32 opacity-100"
-      />
+
           {/* Left panel content */}
           <div className="mb-6 md:mb-8">
             <div className="flex items-center justify-center lg:justify-start mb-4">
@@ -174,10 +182,13 @@ const Page = () => {
         </div>
 
         {/* Right Panel - Form with translucent blurred background */}
-        <div className="w-full lg:w-1/2 p-6 md:p-12 flex items-center justify-center bg-black/60  ">
-          <div className="w-full max-w-md bg-black/40 backdrop-blur-xl rounded-xl shadow-xl border border-gray-700 p-8 ">
-            <form onSubmit={handleSubmit} className="space-y-6 text-white">
-              {/* Form fields here */}
+<div className="w-full lg:w-1/2 p-6 md:p-10 flex items-center justify-center bg-black/60 overflow-hidden">
+  <div
+    className="w-full max-w-md bg-black/40 backdrop-blur-xl rounded-xl shadow-xl border border-gray-700 p-8
+    max-h-[90vh] overflow-y-auto "
+  >
+    <form onSubmit={handleSubmit} className="space-y-6 text-white">
+      {/* Form fields here */}
               {/* Name */}
               <div>
                 <label className="block text-white text-sm mb-2 ">Name</label>
