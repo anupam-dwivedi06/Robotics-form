@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaChevronDown, FaChevronUp, FaUserCircle, FaTimes } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaUserCircle, FaTimes, FaSpinner } from "react-icons/fa";
 
 export default function UserInfo() {
   const [users, setUsers] = useState([]);
@@ -9,6 +9,7 @@ export default function UserInfo() {
   const [other, setOther] = useState([]);
   const [manitCount, setManitCount] = useState(0);
   const [otherCount, setOtherCount] = useState(0);
+  const [loading, setLoading] = useState(true); // ✅ loader state
 
   const [expandedUser, setExpandedUser] = useState(null);
   const [modalImage, setModalImage] = useState(null);
@@ -16,6 +17,7 @@ export default function UserInfo() {
   useEffect(() => {
     async function fetchData() {
       try {
+        setLoading(true); // start loading
         const res = await fetch("/api/users");
         const data = await res.json();
         setUsers(data.users || []);
@@ -25,6 +27,8 @@ export default function UserInfo() {
         setOtherCount(data.otherCount || 0);
       } catch (error) {
         console.error("Error fetching data", error);
+      } finally {
+        setLoading(false); // stop loading
       }
     }
     fetchData();
@@ -132,21 +136,31 @@ export default function UserInfo() {
         Registered Users
       </h1>
 
-      {/* MANIT Students */}
-      <section className="mb-10">
-        <h2 className="text-xl font-bold text-green-700 mb-2">
-          MANIT Students ({manitCount})
-        </h2>
-        {renderUserList(manit)}
-      </section>
+      {loading ? (
+        // Loader
+        <div className="flex flex-col items-center justify-center py-20">
+          <FaSpinner className="animate-spin text-4xl text-indigo-600 mb-4" />
+          <p className="text-gray-600 text-lg">Loading users...</p>
+        </div>
+      ) : (
+        <>
+          {/* MANIT Students */}
+          <section className="mb-10">
+            <h2 className="text-xl font-bold text-green-700 mb-2">
+              MANIT Students ({manitCount})
+            </h2>
+            {renderUserList(manit)}
+          </section>
 
-      {/* Other Colleges */}
-      <section className="mb-10">
-        <h2 className="text-xl font-bold text-orange-700 mb-2">
-          Other Colleges ({otherCount})
-        </h2>
-        {renderUserList(other)}
-      </section>
+          {/* Other Colleges */}
+          <section className="mb-10">
+            <h2 className="text-xl font-bold text-orange-700 mb-2">
+              Other Colleges ({otherCount})
+            </h2>
+            {renderUserList(other)}
+          </section>
+        </>
+      )}
 
       {/* Modal */}
       {modalImage && (
