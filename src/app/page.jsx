@@ -185,8 +185,8 @@ const Page = () => {
         {/* Right Panel - Form with translucent blurred background */}
         <div className="w-full lg:w-[45%] p-6 md:p-10 flex items-center justify-center bg-black/60 overflow-hidden">
           <div
-            className="w-full max-w-md bg-black/40 backdrop-blur-xl rounded-xl shadow-xl border border-gray-700 p-6
-    max-h-[90vh] overflow-y-auto "
+            className="w-full max-w-md bg-black/40 backdrop-blur-xl rounded-xl shadow-xl border border-gray-700 p-7
+    max-h-[88vh] overflow-y-auto "
           >
             <form onSubmit={handleSubmit} className="space-y-6 text-white">
               {/* Form fields here */}
