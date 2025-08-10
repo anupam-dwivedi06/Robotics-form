@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaChevronDown, FaChevronUp, FaUserCircle, FaTimes, FaSpinner } from "react-icons/fa";
+import {
+  FaChevronDown,
+  FaChevronUp,
+  FaUserCircle,
+  FaTimes,
+  FaDownload,
+} from "react-icons/fa";
 
 export default function UserInfo() {
   const [users, setUsers] = useState([]);
@@ -9,15 +15,15 @@ export default function UserInfo() {
   const [other, setOther] = useState([]);
   const [manitCount, setManitCount] = useState(0);
   const [otherCount, setOtherCount] = useState(0);
-  const [loading, setLoading] = useState(true); // ✅ loader state
+  const [loading, setLoading] = useState(true);
 
   const [expandedUser, setExpandedUser] = useState(null);
   const [modalImage, setModalImage] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       try {
-        setLoading(true); // start loading
         const res = await fetch("/api/users");
         const data = await res.json();
         setUsers(data.users || []);
@@ -28,7 +34,7 @@ export default function UserInfo() {
       } catch (error) {
         console.error("Error fetching data", error);
       } finally {
-        setLoading(false); // stop loading
+        setLoading(false);
       }
     }
     fetchData();
@@ -44,6 +50,31 @@ export default function UserInfo() {
 
   const closeModal = () => {
     setModalImage(null);
+  };
+
+  // CSV Export function
+  const exportToCSV = (data, fileName) => {
+    if (!data.length) return;
+    const headers = Object.keys(data[0]);
+    const csvRows = [
+      headers.join(","), // header row
+      ...data.map((row) =>
+        headers
+          .map((field) => `"${row[field] ? row[field] : ""}"`)
+          .join(",")
+      ),
+    ];
+    const csvData = csvRows.join("\n");
+    const blob = new Blob([csvData], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.setAttribute("hidden", "");
+    a.href = url;
+    a.download = `${fileName}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   // reusable user list renderer
@@ -130,37 +161,57 @@ export default function UserInfo() {
     </div>
   );
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="p-8 max-w-6xl mx-auto">
       <h1 className="text-3xl font-extrabold text-indigo-800 mb-6 border-b pb-2">
         Registered Users
       </h1>
 
-      {loading ? (
-        // Loader
-        <div className="flex flex-col items-center justify-center py-20">
-          <FaSpinner className="animate-spin text-4xl text-indigo-600 mb-4" />
-          <p className="text-gray-600 text-lg">Loading users...</p>
-        </div>
-      ) : (
-        <>
-          {/* MANIT Students */}
-          <section className="mb-10">
-            <h2 className="text-xl font-bold text-green-700 mb-2">
-              MANIT Students ({manitCount})
-            </h2>
-            {renderUserList(manit)}
-          </section>
+      {/* Export All */}
+      <div className="flex gap-4 mb-6">
+        <button
+          onClick={() => exportToCSV(users, "all_users")}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+        >
+          <FaDownload /> Export All Users
+        </button>
+        <button
+          onClick={() => exportToCSV(manit, "manit_users")}
+          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+        >
+          <FaDownload /> Export MANIT Users
+        </button>
+        <button
+          onClick={() => exportToCSV(other, "other_users")}
+          className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+        >
+          <FaDownload /> Export Other College Users
+        </button>
+      </div>
 
-          {/* Other Colleges */}
-          <section className="mb-10">
-            <h2 className="text-xl font-bold text-orange-700 mb-2">
-              Other Colleges ({otherCount})
-            </h2>
-            {renderUserList(other)}
-          </section>
-        </>
-      )}
+      {/* MANIT Students */}
+      <section className="mb-10">
+        <h2 className="text-xl font-bold text-green-700 mb-2">
+          MANIT Students ({manitCount})
+        </h2>
+        {renderUserList(manit)}
+      </section>
+
+      {/* Other Colleges */}
+      <section className="mb-10">
+        <h2 className="text-xl font-bold text-orange-700 mb-2">
+          Other Colleges ({otherCount})
+        </h2>
+        {renderUserList(other)}
+      </section>
 
       {/* Modal */}
       {modalImage && (
