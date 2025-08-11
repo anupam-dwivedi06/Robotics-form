@@ -124,7 +124,7 @@ const Page = () => {
 
 
         <div className=" relative w-full lg:w-[55%] p-6 md:p-12 flex flex-col justify-center text-white bg-black/60 
-  lg:sticky lg:top-0 lg:h-screen pl-9">
+  lg:sticky lg:top-0 lg:h-screen pl-8">
           <img
             src="/MANIT.png"
             alt="Decoration 1"
@@ -299,7 +299,7 @@ const Page = () => {
                       required
                     />
                   </div>
-                  <p className="text-gray-300 text-xs mb-2 poppins-light">Pay ₹99 and upload payment screenshot:</p>
+                  <p className="text-gray-300 text-xs mb-2 poppins-light">Pay ₹199 and upload payment screenshot:</p>
                   <img
                     src="/ss-pay.jpeg"
                     alt="Payment QR"
@@ -338,6 +338,12 @@ const Page = () => {
                   </option>
                   <option value="4th" className="bg-gray-800 poppins-light">
                     4th Year
+                  </option>
+                  <option value="4th" className="bg-gray-800 poppins-light">
+                    4th Year
+                  </option>
+                  <option value="4th" className="bg-gray-800 poppins-light">
+                    School Student
                   </option>
                 </select>
               </div>
