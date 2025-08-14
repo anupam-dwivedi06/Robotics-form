@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "axios": "^1.11.0",
     "bcrypt": "^6.0.0",
     "cloudinary": "^2.7.0",
     "dotenv": "^17.2.1",
     "formidable": "^3.5.4",
     "fs": "^0.0.1-security",
+    "gsap": "^3.13.0",
     "install": "^0.13.0",
     "mongoose": "^8.17.0",
     "multer": "^2.0.2",
