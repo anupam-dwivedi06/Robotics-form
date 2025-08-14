@@ -343,10 +343,7 @@ const Page = () => {
                   <option value="4th" className="bg-gray-800 poppins-light">
                     4th Year
                   </option>
-                  <option value="4th" className="bg-gray-800 poppins-light">
-                    4th Year
-                  </option>
-                  <option value="4th" className="bg-gray-800 poppins-light">
+                  <option value="school" className="bg-gray-800 poppins-light">
                     School Student
                   </option>
                 </select>
@@ -391,7 +388,7 @@ const Page = () => {
                   bg-gradient-to-r from-purple-600 to-pink-600
                   hover:from-purple-700 hover:to-pink-700
                   ${isPending ? "opacity-50 cursor-not-allowed" : "hover:scale-105 active:scale-95"}`}
-                  
+
               >
                 {isPending ? "Registering..." : "Register Now"}
               </button>
