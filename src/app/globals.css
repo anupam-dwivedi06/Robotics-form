@@ -114,6 +114,7 @@ textarea {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.fixed2
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
@@ -121,7 +122,51 @@ body {
   color: white;
   overflow-x: hidden;
 }
+::-webkit-scrollbar {
+  width: 6px;
+  background: linear-gradient(180deg, #7c3aed, #ec4899); /* purple to pink gradient */
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background:transparent;
+  
+}
+.left-panel img {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+  
+}
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
 
+/* Scrollbar Track Background */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2); /* semi-transparent dark track */
+  border-radius: 10px;
+}
+
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2d1458, #a4306a); /* purple to pink gradient */
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  transition: background 0.3s ease;
+}
+
+/* Scrollbar Thumb Hover */
+
+
+/* Optional: Scrollbar corner if both horizontal and vertical scrollbars present */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
 /* Moving robo-style animated background */
 .animated-bg {
   background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #0d0d0d, #111111);

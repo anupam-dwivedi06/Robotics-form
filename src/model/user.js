@@ -8,8 +8,14 @@ const userSchema = new mongoose.Schema(
     college: String,
     year: String,
     know: String,
-    scNumber: String,
-    password: String,
+    scNumber:{
+      type: String,
+      unique: true,
+    },
+    password:{
+      type: String,
+      unique: true,
+    },
     otherCollege: String,
     image: String,
   },

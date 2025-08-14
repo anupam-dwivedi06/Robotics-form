@@ -12,9 +12,13 @@ export async function POST(req) {
     const { scNumber, password } = data;
 
     if (!scNumber || !password) {
-      return NextResponse.json({ message: "Scholar number and password required" }, { status: 400 });
+      return NextResponse.json(
+        { message: "Scholar number and password required" },
+        { status: 400 }
+      );
     }
 
+    // ERP API check
     const agent = new https.Agent({ rejectUnauthorized: false });
     const res = await axios.post(
       "https://erpapi.manit.ac.in/api/login",
@@ -22,12 +26,39 @@ export async function POST(req) {
       { httpsAgent: agent, headers: { "Content-Type": "application/json" } }
     );
 
-    if (!res.data) throw new Error("ERP login failed");
+    if (!res.data) {
+      return NextResponse.json({ error: "ERP login failed" }, { status: 401 });
+    }
 
+    // Check for duplicate scholar number
+    const existingUser = await User.findOne({ scNumber });
+    if (existingUser) {
+      return NextResponse.json(
+        { message: "Scholar number already registered" },
+        { status: 409 }
+      );
+    }
+
+    // Save user
     const savedUser = new User(data);
     await savedUser.save();
-    return NextResponse.json({ message: "Login success", user: savedUser });
+
+    return NextResponse.json(
+      { message: "User registered successfully", user: savedUser },
+      { status: 201 }
+    );
+
   } catch (err) {
-    return NextResponse.json({ message: "Login error", error: err.message }, { status: 500 });
+    // Handle MongoDB duplicate key error
+    if (err.code === 11000) {
+      return NextResponse.json(
+        { error: "Scholar number already registered" },
+        { status: 409 }
+      );
+    }
+    return NextResponse.json(
+      { message: "Server error", error: err.message },
+      { status: 500 }
+    );
   }
 }
