@@ -94,7 +94,8 @@ const Page = () => {
         toast.error("Incomplete data");
       }
     } catch (err) {
-      alert("Error: " + err.message);
+      // alert("Error: " + err.message);
+      toast.error("Incorrect Credentials");
     } finally {
       setIsPending(false);
     }
