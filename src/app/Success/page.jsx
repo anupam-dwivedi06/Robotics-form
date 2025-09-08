@@ -3,7 +3,7 @@ import Link from "next/link";
 import toast from 'react-hot-toast';
 
 const SuccessPage = () => {
-    toast.success("User registered successfully!")
+    // toast.success("User registered successfully!")
   return (
     
     <div className="min-h-screen bg-[#121212] flex items-center justify-center text-white flex-col gap-4">

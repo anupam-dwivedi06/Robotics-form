@@ -2,7 +2,9 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 import { NextResponse } from "next/server";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +19,8 @@ const Page = () => {
     image: "",
     otherCollege: "",
   });
+
+  const router = useRouter();
 
   const [isPending, setIsPending] = useState(false);
 
@@ -63,7 +67,9 @@ const Page = () => {
 
         const data = await res.json();
         if (!res.ok) throw new Error(data.message);
-        alert("MANIT user verified and registered!");
+        // alert("MANIT user verified and registered!");
+        toast.success("MANIT user verified and registered!");
+        router.push("/success");
       } else if (college === "Other" && image) {
         const uploadRes = await fetch("/api/upload", {
           method: "POST",
@@ -80,9 +86,12 @@ const Page = () => {
         });
 
         if (!res.data) throw new Error("User registration failed");
-        alert("User registered successfully!");
+        // alert("User registered successfully!");
+        toast.success("User registered successfully!");
+        router.push("/success");
       } else {
-        alert("Incomplete data");
+        // alert("Incomplete data");
+        toast.error("Incomplete data");
       }
     } catch (err) {
       alert("Error: " + err.message);
@@ -177,7 +186,7 @@ const Page = () => {
           <div className="space-y-4 mb-6 lg:mb-0 text-white">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 ">
               <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2  ">DATE</div>
-              <div className="bg-gray-900 px-5 py-1  text-sm poppins-light border2  ">06 - 07 Sept</div>
+              <div className="bg-gray-900 px-5 py-1  text-sm poppins-light border2  ">11 - 12 October</div>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0  ">
               <div className="bg-white text-black px-4 py-1 font-bold text-sm  w-fit poppins-light border2  ">VENUE</div>
@@ -274,7 +283,7 @@ const Page = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-white text-sm mb-2">MANIT Email Password</label>
+                    <label className="block text-white text-sm mb-2">ERP Password</label>
                     <input
                       type="password"
                       name="password"
