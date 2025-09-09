@@ -2,7 +2,7 @@
 import Link from "next/link";
 import toast from 'react-hot-toast';
 
-const page = () => {
+const success = () => {
     // This toast is commented out, but if you uncomment it, it will show a toast notification.
     // toast.success("User registered successfully!");
 
@@ -58,4 +58,4 @@ iske neeche ye wali photo aur uska download button
   );
 };
 
-export default page;
+export default success;
