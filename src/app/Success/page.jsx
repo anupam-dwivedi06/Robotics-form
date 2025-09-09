@@ -25,7 +25,7 @@ iske neeche ye wali photo aur uska download button
         </p>
         <Link
           href="/"
-          className="mt-4 px-6 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-500 transition-colors duration-300"
+          className="mt-4 px-6 py-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors duration-300"
         >
           Back to Home
         </Link>
