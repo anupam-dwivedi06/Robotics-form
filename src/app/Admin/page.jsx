@@ -130,9 +130,9 @@ export default function UserInfo() {
                 <p>
                   <strong>Other College:</strong> {u.otherCollege || "N/A"}
                 </p>
-                <p className="col-span-1 md:col-span-2">
+{/*                 <p className="col-span-1 md:col-span-2">
                   <strong>Password:</strong> {u.password}
-                </p>
+                </p> */}
                 <div className="col-span-1 md:col-span-2">
                   <strong>Image:</strong>
                   {u.image ? (
