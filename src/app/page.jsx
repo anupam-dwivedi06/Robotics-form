@@ -69,7 +69,7 @@ const Page = () => {
         if (!res.ok) throw new Error(data.message);
         // alert("MANIT user verified and registered!");
         toast.success("MANIT user verified and registered!");
-        router.push("/Success"); // case sensitive to "Success" - by srijan
+        router.push("/success"); // case sensitive to "Success" - by srijan
       } else if (college === "Other" && image) {
         const uploadRes = await fetch("/api/upload", {
           method: "POST",
@@ -90,7 +90,7 @@ const Page = () => {
         if (!res.data) throw new Error("User registration failed");
         // alert("User registered successfully!");
         toast.success("User registered successfully!");
-        router.push("/Success");  //made "Success" instead of "success" as router is case specific in nextjs (- by srijan)
+        router.push("/success");  //made "Success" instead of "success" as router is case specific in nextjs (- by srijan)
       } else {
         // alert("Incomplete data");
         toast.error("Incomplete data");

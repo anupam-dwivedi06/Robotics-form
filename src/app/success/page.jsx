@@ -20,8 +20,7 @@ const success = () => {
           You have registered! and once we verify your application successfully, we'll send a confirmation email along with a unique to the email-id provided
         </p>
         <p>
-           Meanwhile you can share this event poster provided below on you social media stories!
-iske neeche ye wali photo aur uska download button
+           Meanwhile you can share this event poster provided below on your social media stories!
         </p>
         <Link
           href="/"
