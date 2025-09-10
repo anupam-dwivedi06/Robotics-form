@@ -88,7 +88,7 @@ const Page = () => {
         if (!res.data) throw new Error("User registration failed");
         // alert("User registered successfully!");
         toast.success("User registered successfully!");
-        router.push("/success");
+        router.push("/Success");  //made "Success" instead of "success" as router is case specific in nextjs (- by srijan)
       } else {
         // alert("Incomplete data");
         toast.error("Incomplete data");
