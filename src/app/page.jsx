@@ -80,8 +80,10 @@ const Page = () => {
         const cloudData = await uploadRes.json();
         if (!cloudData?.url) throw new Error("Cloudinary upload failed");
 
+        // Remove scNumber and password for non-MANIT users
+        const { scNumber: _, password: __, ...otherUserData } = formData;
         const res = await axios.post("/api/register", {
-          ...formData,
+          ...otherUserData,
           image: cloudData.url,
         });
 

@@ -11,10 +11,12 @@ const userSchema = new mongoose.Schema(
     scNumber:{
       type: String,
       unique: true,
+      sparse: true, // This allows multiple null/undefined values but ensures uniqueness for actual values
+      required: false,
     },
     password:{
       type: String,
-      unique: true,
+      required: false,
     },
     otherCollege: String,
     image: String,
