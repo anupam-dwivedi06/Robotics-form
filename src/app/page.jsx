@@ -69,7 +69,7 @@ const Page = () => {
         if (!res.ok) throw new Error(data.message);
         // alert("MANIT user verified and registered!");
         toast.success("MANIT user verified and registered!");
-        router.push("/success");
+        router.push("/Success"); // case sensitive to "Success" - by srijan
       } else if (college === "Other" && image) {
         const uploadRes = await fetch("/api/upload", {
           method: "POST",
